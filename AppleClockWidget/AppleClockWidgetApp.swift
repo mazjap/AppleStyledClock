@@ -1,17 +1,22 @@
-//
-//  AppleClockWidgetApp.swift
-//  AppleClockWidget
-//
-//  Created by Jordan Christensen on 12/23/23.
-//
-
 import SwiftUI
 
 @main
 struct AppleClockWidgetApp: App {
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ClockView(colorScheme: colorScheme)
+                .background {
+                    switch colorScheme {
+                    case .light:
+                        Color.white
+                    case .dark:
+                        Color(nsColor: .darkGray)
+                    @unknown default:
+                        Color.gray
+                    }
+                }
         }
     }
 }
