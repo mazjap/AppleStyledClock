@@ -42,58 +42,20 @@ struct ClockView: View {
     
     private func rotatingHandles(for date: Date) -> some View {
         Canvas { context, size in
-            let diameter = min(size.width, size.height)
-            let radius = diameter / 2
             let bounds = CGRect(origin: .zero, size: size)
-            let handWidth = radius / 45
-            let halfHandWidth = handWidth / 2
-            let blownUpWidth = radius / 16
-            let halfBlownUpWidth = blownUpWidth / 2
             let angles = angles(for: date)
-            let centerHolePath = Circle().path(in: CGRect(x: bounds.midX - halfBlownUpWidth, y: bounds.midY - halfBlownUpWidth, width: blownUpWidth, height: blownUpWidth))
-            
-            context.stroke(Circle().path(in: CGRect(x: bounds.midX - halfBlownUpWidth - halfHandWidth, y: bounds.midY - halfBlownUpWidth - halfHandWidth, width: blownUpWidth + handWidth, height: blownUpWidth + handWidth)), with: .color(minuteHourHandColor), lineWidth: handWidth)
             
             context.fill(
-                Capsule()
-                    .rotation(angles.hour, anchor: .top)
-                    .path(in: CGRect(x: bounds.midX - halfHandWidth, y: bounds.midY, width: handWidth, height: radius * 0.6)),
+                MinutesHoursHandShape(rotation: angles.hour, isMinutesHand: false).path(in: bounds),
                 with: .color(minuteHourHandColor)
             )
             context.fill(
-                Capsule()
-                    .offset(y: radius / 8)
-                    .rotation(angles.hour, anchor: .top)
-                    .path(in: CGRect(x: bounds.midX - halfBlownUpWidth, y: bounds.midY, width: blownUpWidth, height: radius * 0.6 - radius / 8)),
+                MinutesHoursHandShape(rotation: angles.minute, isMinutesHand: true).path(in: bounds),
                 with: .color(minuteHourHandColor)
             )
             context.fill(
-                Capsule()
-                    .rotation(angles.minute, anchor: .top)
-                    .path(in: CGRect(x: bounds.midX - halfHandWidth, y: bounds.midY, width: handWidth, height: radius * 0.9)),
-                with: .color(minuteHourHandColor)
-            )
-            context.fill(
-                Capsule()
-                    .offset(y: radius / 8)
-                    .rotation(angles.minute, anchor: .top)
-                    .path(in: CGRect(x: bounds.midX - halfBlownUpWidth, y: bounds.midY, width: blownUpWidth, height: radius * 0.9 - radius / 8)),
-                with: .color(minuteHourHandColor)
-            )
-            context.fill(
-                Capsule()
-                    .offset(y: -radius / 10)
-                    .rotation(angles.second, anchor: .top)
-                    .path(in: CGRect(x: bounds.midX - halfHandWidth, y: bounds.midY, width: handWidth, height: radius)),
+                SecondsHandShape(rotation: angles.second).path(in: bounds),
                 with: .color(secondHandColor)
-            )
-            
-            context.stroke(centerHolePath, with: .color(secondHandColor), lineWidth: handWidth * 1.1)
-            
-            context.blendMode = .clear
-            context.fill(
-                centerHolePath,
-                with: .color(.black)
             )
         }
     }
@@ -140,14 +102,4 @@ struct ClockView: View {
         .padding()
     }
     .ignoresSafeArea()
-}
-
-extension CGPoint {
-    func scaled(by scale: Double) -> CGPoint {
-        applying(.init(scaleX: scale, y: scale))
-    }
-    
-    func translated(x: Double, y: Double) -> CGPoint {
-        applying(.init(translationX: x, y: y))
-    }
 }

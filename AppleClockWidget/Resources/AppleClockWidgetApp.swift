@@ -10,9 +10,9 @@ struct AppleClockWidgetApp: App {
                 .background {
                     switch colorScheme {
                     case .light:
-                        Color.white
-                    case .dark:
                         Color(NativeColor.darkGray)
+                    case .dark:
+                        Color.white
                     @unknown default:
                         Color.gray
                     }

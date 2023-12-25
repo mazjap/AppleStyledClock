@@ -14,6 +14,10 @@
 		0EA5562C2B37B49900ACEDDC /* withOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5562B2B37B49900ACEDDC /* withOperator.swift */; };
 		0EA5562E2B38D19A00ACEDDC /* ClockBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */; };
 		0EA556322B390AA300ACEDDC /* NativeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA556312B390AA300ACEDDC /* NativeColor.swift */; };
+		0EA556372B393BCB00ACEDDC /* SecondsHandShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA556362B393BCB00ACEDDC /* SecondsHandShape.swift */; };
+		0EA556392B393C4000ACEDDC /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA556382B393C4000ACEDDC /* CGPoint+Extension.swift */; };
+		0EA5563B2B393C4E00ACEDDC /* CGRect+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5563A2B393C4E00ACEDDC /* CGRect+Extension.swift */; };
+		0EA5563D2B39448700ACEDDC /* MinutesHoursHandShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5563C2B39448700ACEDDC /* MinutesHoursHandShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		0EA5562B2B37B49900ACEDDC /* withOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = withOperator.swift; sourceTree = "<group>"; };
 		0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockBackground.swift; sourceTree = "<group>"; };
 		0EA556312B390AA300ACEDDC /* NativeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeColor.swift; sourceTree = "<group>"; };
+		0EA556362B393BCB00ACEDDC /* SecondsHandShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondsHandShape.swift; sourceTree = "<group>"; };
+		0EA556382B393C4000ACEDDC /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		0EA5563A2B393C4E00ACEDDC /* CGRect+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extension.swift"; sourceTree = "<group>"; };
+		0EA5563C2B39448700ACEDDC /* MinutesHoursHandShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinutesHoursHandShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,8 @@
 			children = (
 				0EA556312B390AA300ACEDDC /* NativeColor.swift */,
 				0EA5562B2B37B49900ACEDDC /* withOperator.swift */,
+				0EA556382B393C4000ACEDDC /* CGPoint+Extension.swift */,
+				0EA5563A2B393C4E00ACEDDC /* CGRect+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -86,6 +96,7 @@
 		0EA556342B393B6500ACEDDC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0EA5563E2B39450600ACEDDC /* Shapes */,
 				0EA5561E2B37B23100ACEDDC /* ClockView.swift */,
 				0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */,
 			);
@@ -100,6 +111,15 @@
 				0EA556222B37B23200ACEDDC /* AppleClockWidget.entitlements */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		0EA5563E2B39450600ACEDDC /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				0EA556362B393BCB00ACEDDC /* SecondsHandShape.swift */,
+				0EA5563C2B39448700ACEDDC /* MinutesHoursHandShape.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,9 +193,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA5562E2B38D19A00ACEDDC /* ClockBackground.swift in Sources */,
+				0EA5563B2B393C4E00ACEDDC /* CGRect+Extension.swift in Sources */,
+				0EA5563D2B39448700ACEDDC /* MinutesHoursHandShape.swift in Sources */,
 				0EA5562C2B37B49900ACEDDC /* withOperator.swift in Sources */,
 				0EA5561F2B37B23100ACEDDC /* ClockView.swift in Sources */,
 				0EA556322B390AA300ACEDDC /* NativeColor.swift in Sources */,
+				0EA556392B393C4000ACEDDC /* CGPoint+Extension.swift in Sources */,
+				0EA556372B393BCB00ACEDDC /* SecondsHandShape.swift in Sources */,
 				0EA5561D2B37B23100ACEDDC /* AppleClockWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
