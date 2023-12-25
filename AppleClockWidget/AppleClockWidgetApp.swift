@@ -12,7 +12,7 @@ struct AppleClockWidgetApp: App {
                     case .light:
                         Color.white
                     case .dark:
-                        Color(nsColor: .darkGray)
+                        Color(NativeColor.darkGray)
                     @unknown default:
                         Color.gray
                     }

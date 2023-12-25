@@ -13,6 +13,7 @@
 		0EA556252B37B23200ACEDDC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA556242B37B23200ACEDDC /* Preview Assets.xcassets */; };
 		0EA5562C2B37B49900ACEDDC /* withOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5562B2B37B49900ACEDDC /* withOperator.swift */; };
 		0EA5562E2B38D19A00ACEDDC /* ClockBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */; };
+		0EA556322B390AA300ACEDDC /* NativeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA556312B390AA300ACEDDC /* NativeColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0EA556242B37B23200ACEDDC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0EA5562B2B37B49900ACEDDC /* withOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = withOperator.swift; sourceTree = "<group>"; };
 		0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockBackground.swift; sourceTree = "<group>"; };
+		0EA556312B390AA300ACEDDC /* NativeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				0EA5561C2B37B23100ACEDDC /* AppleClockWidgetApp.swift */,
 				0EA5561E2B37B23100ACEDDC /* ClockView.swift */,
+				0EA556312B390AA300ACEDDC /* NativeColor.swift */,
 				0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */,
 				0EA5562B2B37B49900ACEDDC /* withOperator.swift */,
 				0EA556202B37B23200ACEDDC /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 				0EA5562E2B38D19A00ACEDDC /* ClockBackground.swift in Sources */,
 				0EA5562C2B37B49900ACEDDC /* withOperator.swift in Sources */,
 				0EA5561F2B37B23100ACEDDC /* ClockView.swift in Sources */,
+				0EA556322B390AA300ACEDDC /* NativeColor.swift in Sources */,
 				0EA5561D2B37B23100ACEDDC /* AppleClockWidgetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

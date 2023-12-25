@@ -12,7 +12,7 @@ struct ClockView: View {
     init(colorScheme: ColorScheme) {
         switch colorScheme {
         case .light:
-            self.init(secondHandColor: .red, minuteHourHandColor: .black, indicatorHourNumberColor: .black, timeZoneTextColor: .secondary, backgroundColor: .black.opacity(0.95))
+            self.init(secondHandColor: .red, minuteHourHandColor: .black, indicatorHourNumberColor: .black, timeZoneTextColor: .secondary, backgroundColor: .white)
         case .dark:
             self.init()
         @unknown default:
@@ -20,7 +20,7 @@ struct ClockView: View {
         }
     }
     
-    init(secondHandColor: Color = .red, minuteHourHandColor: Color = .white, indicatorHourNumberColor: Color = .white, timeZoneTextColor: Color = .white.opacity(0.6), backgroundColor: Color = Color(nsColor: .darkGray)) {
+    init(secondHandColor: Color = .red, minuteHourHandColor: Color = .white, indicatorHourNumberColor: Color = .white, timeZoneTextColor: Color = .white.opacity(0.6), backgroundColor: Color = Color(NativeColor.darkGray)) {
         self.secondHandColor = secondHandColor
         self.minuteHourHandColor = minuteHourHandColor
         self.indicatorHourNumberColor = indicatorHourNumberColor
@@ -30,13 +30,14 @@ struct ClockView: View {
     
     var body: some View {
         ZStack {
-            ClockBackground(style: .all)
+            ClockBackground(style: .all, backgroundColor: backgroundColor)
                 .foregroundStyle(indicatorHourNumberColor)
             
             TimelineView(.animation(minimumInterval: 1 / 20)) { tl in
                 rotatingHandles(for: tl.date)
             }
         }
+        .aspectRatio(1, contentMode: .fit)
     }
     
     private func rotatingHandles(for date: Date) -> some View {
@@ -44,23 +45,6 @@ struct ClockView: View {
             let diameter = min(size.width, size.height)
             let radius = diameter / 2
             let bounds = CGRect(origin: .zero, size: size)
-            let clockFrame = CGRect(
-                x: (size.width - diameter) / 2,
-                y: (size.height - diameter) / 2,
-                width: diameter,
-                height: diameter
-            )
-            let circlePath = Circle().path(in: clockFrame)
-            
-            context.fill(
-                Path() <- { $0.addRect(bounds) },
-                with: .color(backgroundColor)
-            )
-            
-            context.blendMode = .clear
-            context.fill(circlePath, with: .color(.black))
-            context.blendMode = .normal
-            
             let handWidth = radius / 45
             let halfHandWidth = handWidth / 2
             let blownUpWidth = radius / 16
@@ -131,10 +115,31 @@ struct ClockView: View {
 }
 
 #Preview {
-    ClockView(colorScheme: .light)
-        .background {
-            Color.white
+    func Stack<Content: View>(@ViewBuilder _ content: @escaping () -> Content) -> some View {
+        #if os(macOS)
+        HStack(content: content)
+        #else
+        VStack(content: content)
+        #endif
+    }
+    
+    return ZStack {
+        Color.black.opacity(0.95)
+        
+        Stack {
+            Spacer()
+            
+            ClockView(colorScheme: .light)
+            
+            Spacer()
+            
+            ClockView(colorScheme: .dark)
+            
+            Spacer()
         }
+        .padding()
+    }
+    .ignoresSafeArea()
 }
 
 extension CGPoint {

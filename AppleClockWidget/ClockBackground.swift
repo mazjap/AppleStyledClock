@@ -11,9 +11,11 @@ struct ClockBackground: View {
     }
     
     private let style: Style
+    private let backgroundColor: Color
     
-    init(style: Style = .all) {
+    init(style: Style = .all, backgroundColor: Color = .clear) {
         self.style = style
+        self.backgroundColor = backgroundColor
     }
     
     var body: some View {
@@ -30,6 +32,9 @@ struct ClockBackground: View {
             }
             
             ZStack {
+                Circle()
+                    .foregroundStyle(backgroundColor)
+                
                 if isNumbered && isTicked {
                     Image("ClockStaticBackground" + size).resizable().scaledToFit()
                 } else if isNumbered {
@@ -46,6 +51,39 @@ struct ClockBackground: View {
                 }
             }
             .position(CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2))
+        }
+    }
+}
+
+#Preview {
+    VStack {
+        HStack {
+            VStack {
+                Text("Numbered")
+                ClockBackground(style: .numbered, backgroundColor: .green)
+            }
+            
+            VStack {
+                Text("Ticked")
+                ClockBackground(style: .ticked, backgroundColor: .red)
+            }
+            
+            VStack {
+                Text("Timezone")
+                ClockBackground(style: .timezoneAttributed, backgroundColor: .blue)
+            }
+        }
+        
+        HStack {
+            VStack {
+                Text("Ticked & Numbered")
+                ClockBackground(style: ClockBackground.Style([.ticked, .numbered]), backgroundColor: .yellow)
+            }
+            
+            VStack {
+                Text("All")
+                ClockBackground(style: .all)
+            }
         }
     }
 }
