@@ -58,13 +58,9 @@
 		0EA5561B2B37B23100ACEDDC /* AppleClockWidget */ = {
 			isa = PBXGroup;
 			children = (
-				0EA5561C2B37B23100ACEDDC /* AppleClockWidgetApp.swift */,
-				0EA5561E2B37B23100ACEDDC /* ClockView.swift */,
-				0EA556312B390AA300ACEDDC /* NativeColor.swift */,
-				0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */,
-				0EA5562B2B37B49900ACEDDC /* withOperator.swift */,
-				0EA556202B37B23200ACEDDC /* Assets.xcassets */,
-				0EA556222B37B23200ACEDDC /* AppleClockWidget.entitlements */,
+				0EA556352B393B7300ACEDDC /* Resources */,
+				0EA556342B393B6500ACEDDC /* Views */,
+				0EA556332B393B5A00ACEDDC /* Helpers */,
 				0EA556232B37B23200ACEDDC /* Preview Content */,
 			);
 			path = AppleClockWidget;
@@ -76,6 +72,34 @@
 				0EA556242B37B23200ACEDDC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0EA556332B393B5A00ACEDDC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0EA556312B390AA300ACEDDC /* NativeColor.swift */,
+				0EA5562B2B37B49900ACEDDC /* withOperator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0EA556342B393B6500ACEDDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0EA5561E2B37B23100ACEDDC /* ClockView.swift */,
+				0EA5562D2B38D19A00ACEDDC /* ClockBackground.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0EA556352B393B7300ACEDDC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0EA5561C2B37B23100ACEDDC /* AppleClockWidgetApp.swift */,
+				0EA556202B37B23200ACEDDC /* Assets.xcassets */,
+				0EA556222B37B23200ACEDDC /* AppleClockWidget.entitlements */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +302,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AppleClockWidget/AppleClockWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AppleClockWidget/Resources/AppleClockWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleClockWidget/Preview Content\"";
@@ -316,7 +340,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = AppleClockWidget/AppleClockWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AppleClockWidget/Resources/AppleClockWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleClockWidget/Preview Content\"";
