@@ -1,8 +1,13 @@
 import SwiftUI
 
 struct MinutesHoursHandShape: Shape {
-    let rotation: Angle
     let isMinutesHand: Bool
+    var rotation: Angle
+    
+    var animatableData: Double {
+        get { rotation.radians }
+        set { rotation = .radians(newValue) }
+    }
     
     func path(in rect: CGRect) -> Path {
         let diameter = min(rect.width, rect.height)

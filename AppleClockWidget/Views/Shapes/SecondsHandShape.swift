@@ -1,7 +1,12 @@
 import SwiftUI
 
 struct SecondsHandShape: Shape {
-    let rotation: Angle
+    var rotation: Angle
+    
+    var animatableData: Double {
+        get { rotation.radians }
+        set { rotation = .radians(newValue) }
+    }
     
     func path(in rect: CGRect) -> Path {
         let diameter = min(rect.width, rect.height)

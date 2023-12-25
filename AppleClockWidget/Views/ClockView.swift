@@ -7,7 +7,10 @@ struct ClockView: View {
     let timeZoneTextColor: Color
     let backgroundColor: Color
     
-    @Environment(\.displayScale) private var displayScale
+    @State private var secondHandRotation = Angle.zero
+    @State private var minuteHandRotation = Angle.zero
+    @State private var hourHandRotation = Angle.zero
+    private let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     init(colorScheme: ColorScheme) {
         switch colorScheme {
@@ -33,31 +36,32 @@ struct ClockView: View {
             ClockBackground(style: .all, backgroundColor: backgroundColor)
                 .foregroundStyle(indicatorHourNumberColor)
             
-            TimelineView(.animation(minimumInterval: 1 / 20)) { tl in
-                rotatingHandles(for: tl.date)
+            MinutesHoursHandShape(isMinutesHand: false, rotation: hourHandRotation)
+                .fill(minuteHourHandColor)
+            
+            MinutesHoursHandShape(isMinutesHand: true, rotation: minuteHandRotation)
+                .fill(minuteHourHandColor)
+            
+            SecondsHandShape(rotation: secondHandRotation)
+                .fill(secondHandColor)
+        }
+        .onAppear {
+            let rotations = angles(for: .now)
+            secondHandRotation = rotations.second
+            minuteHandRotation = rotations.minute
+            hourHandRotation = rotations.hour
+            
+            withAnimation(.linear(duration: 60).repeatForever(autoreverses: false)) {
+                secondHandRotation = .degrees(secondHandRotation.degrees + 360)
             }
         }
-        .aspectRatio(1, contentMode: .fit)
-    }
-    
-    private func rotatingHandles(for date: Date) -> some View {
-        Canvas { context, size in
-            let bounds = CGRect(origin: .zero, size: size)
-            let angles = angles(for: date)
+        .onReceive(timer) { _ in
+            let rotations = angles(for: .now)
             
-            context.fill(
-                MinutesHoursHandShape(rotation: angles.hour, isMinutesHand: false).path(in: bounds),
-                with: .color(minuteHourHandColor)
-            )
-            context.fill(
-                MinutesHoursHandShape(rotation: angles.minute, isMinutesHand: true).path(in: bounds),
-                with: .color(minuteHourHandColor)
-            )
-            context.fill(
-                SecondsHandShape(rotation: angles.second).path(in: bounds),
-                with: .color(secondHandColor)
-            )
+            minuteHandRotation = rotations.minute
+            hourHandRotation = rotations.hour
         }
+        .aspectRatio(1, contentMode: .fit)
     }
     
     private func angles(for time: Date) -> (hour: Angle, minute: Angle, second: Angle) {
